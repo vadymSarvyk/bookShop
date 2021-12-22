@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Http
+@model Tuple<IHeaderDictionary, IQueryCollection, string>
+@inject ASP_Meeting_20.Services.ITimeService timeService
+@{
+    ViewData["Title"] = "GetActionData";
+}
+
+<h1>GetActionData</h1>
+<h2>Заголовки HTTP запроса</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Header</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var header in Model.Item1)
+        {
+            <tr>
+                <td>@header.Key</td>
+                <td>@header.Value</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<h2>Параметры GET-запроса</h2>
+<table>
+<thead>
+    <tr>
+        <th>Ключ</th>
+        <th>Значение</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var pair in Model.Item2)
+    {
+        <tr>
+            <td>@pair.Key</td>
+            <td>@pair.Value</td>
+        </tr>
+    }
+</tbody>
+
+</table>
+<div>IP-адрес пользователя: <b>@Model.Item3</b></div>
+<hr />
+<div>Текущее время: @timeService.Time</div>

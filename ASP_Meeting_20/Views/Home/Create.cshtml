@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <label>Выберите файл</label>
+    <input type="file" name="photo" />
+    <input type="submit" value="Отправить" class="btn btn-sm btn-primary"/>
+</form>
